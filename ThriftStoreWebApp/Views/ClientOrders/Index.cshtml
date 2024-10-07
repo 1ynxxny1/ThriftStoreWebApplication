@@ -1,0 +1,125 @@
+﻿@{
+    var orders = ViewBag.Orders as List<Order>;
+}
+
+<h3 class="text-center mb-4">My Orders</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Units</th>
+            <th>Total</th>
+            <th>Payment Method</th>
+            <th>Payment Status</th>
+            <th>Order Status</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (orders != null)
+        {
+            foreach (Order order in orders)
+            {
+                int count = 0;
+                decimal total = order.ShippingFee;
+                foreach (OrderItem item in order.Items)
+                {
+                    count += item.Quantity;
+                    total += item.Quantity * item.UnitPrice;
+                }
+
+                string paymentBadgeColor = "bg-danger";
+
+                if (order.PaymentStatus == "pending")
+                {
+                    paymentBadgeColor = "bg-warning text-dark";
+                }
+                else if (order.PaymentStatus == "accepted")
+                {
+                    paymentBadgeColor = "bg-success";
+                }
+                else if (order.PaymentStatus == "canceled")
+                {
+                    paymentBadgeColor = "bg-secondary";
+                }
+
+
+                string orderBadgeColor = "bg-danger";
+                if (order.OrderStatus == "created")
+                {
+                    orderBadgeColor = "bg-warning text-dark";
+                }
+                else if (order.OrderStatus == "accepted")
+                {
+                    orderBadgeColor = "bg-success";
+                }
+                else if (order.OrderStatus == "canceled")
+                {
+                    orderBadgeColor = "bg-secondary";
+                }
+                else if (order.OrderStatus == "shipped")
+                {
+                    orderBadgeColor = "bg-primary";
+                }
+                else if (order.OrderStatus == "delivered")
+                {
+                    orderBadgeColor = "bg-success";
+                }
+                else if (order.OrderStatus == "returned")
+                {
+                    orderBadgeColor = "bg-info text-dark";
+                }
+                else if (order.OrderStatus == "deleted")
+                {
+                    orderBadgeColor = "bg-dark";
+                }
+
+                <tr>
+                    <td>@count</td>
+                    <td>@(total)MKD</td>
+                    <td>@order.PaymentMethod</td>
+                    <td><span class="badge rounded-pill @paymentBadgeColor">@order.PaymentStatus</span></td>
+                    <td><span class="badge rounded-pill @orderBadgeColor">@order.OrderStatus</span></td>
+                    <td>@order.CreatedAt.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <a class="btn btn-success btn-sm" asp-controller="ClientOrders" asp-action="Details"
+                           asp-route-id="@order.Id">Details</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="9" class="text-center">No orders found</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<nav>
+    <ul class="pagination d-flex justify-content-center mb-4">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            string activeClass = "";
+            string linkClass = "page-link";
+
+            if (i == ViewBag.PageIndex)
+            {
+                activeClass = "active";
+                linkClass += " bg-success text-white";
+            }
+
+            <li class="page-item @activeClass">
+                <a class="@linkClass" asp-route-pageIndex="@i"
+                   style="border-color:lightgray; color: @((i == ViewBag.PageIndex) ? "white" : "green");">
+                    @i
+                </a>
+            </li>
+        }
+    </ul>
+</nav>
+
+

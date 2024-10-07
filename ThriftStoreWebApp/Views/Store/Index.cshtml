@@ -1,0 +1,112 @@
+﻿@model StoreSearchModel
+@{
+}
+
+<h2 class="pb-4 text-center">Products</h2>
+
+<form class="row g-3 mb-3">
+    <div class="col-lg-2 col-md-4">
+        <select class="form-select" name="brand" asp-for="Brand" onchange="this.form.submit()">
+            <option value="">All Brands</option>
+            <option value="Unbranded">Unbranded</option>
+            <option value="Missteen">Missteen</option>
+            <option value="Carhartt">Carhartt</option>
+            <option value="Burberry">Burberry</option>
+            <option value="Marlboro Classics">Marlboro Classics</option>
+            <option value="Salomon">Salomon</option>
+            <option value="Wrangler">Wrangler</option>
+            <option value="Champion">Champion</option>
+            <option value="Swish Jeans">Swish Jeans</option>
+        </select>
+    </div>
+    <div class="col-lg-2 col-md-4">
+        <select class="form-select" name="gender" asp-for="Gender" onchange="this.form.submit()">
+            <option value="">All Genders</option>
+            <option value="Mens">Mens</option>
+            <option value="Womens">Womens</option>
+        </select>
+    </div>
+    <div class="col-lg-2 col-md-4">
+        <select class="form-select" name="size" asp-for="Size" onchange="this.form.submit()">
+            <option value="">All Sizes</option>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+            <option value="38">38</option>
+            <option value="45">45</option>
+        </select>
+    </div>
+    <div class="col-lg-2 col-md-4">
+        <select class="form-select" name="category" asp-for="Category" onchange="this.form.submit()">
+            <option value="">All Categories</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Footwear">Footwear</option>
+            <option value="Accessories">Accessories</option>
+        </select>
+    </div>
+    <div class="col-lg-2 col-md-4">
+        <select class="form-select" name="sort" asp-for="Sort" onchange="this.form.submit()">
+            <option value="newest">Order By Newest</option>
+            <option value="price_asc">Price: Low to High</option>
+            <option value="price_desc">Price: High to Low</option>
+        </select>
+    </div>
+    <div class="col-lg-6 col-md-12 d-flex">
+        <input class="form-control me-2" name="search" asp-for="Search" placeholder="Search by Name" />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </div>
+</form>
+
+<div class="row mb-5 g-3">
+    @foreach (var product in ViewBag.Products)
+    {
+        <div class="col-lg-3 col-md-6">
+            <div class="rounded border shadow p-3 text-center h-100">
+                <img src="/products images/@product.ImageFileName" class="img-fluid" alt="..."
+                     style="height: 180px; object-fit: contain" />
+                <hr />
+                <h5 class="py-2">@product.Name</h5>
+                <p>
+                    Brand: @product.Brand, Gender: @product.Gender, Size: @product.Size, Category: @product.Category
+                </p>
+                <h4 class="mb-3">@(product.Price)MKD</h4>
+                <a class="btn btn-dark btn-sm mb-2" asp-controller="Store"
+                   asp-action="Details" asp-route-id="@product.Id" role="button">Details</a>
+                <button type="button" class="btn btn-success btn-sm mb-2" onclick="addToCart(this, @product.Id)">
+                    Add to Cart <i class="bi bi-cart4"></i>
+                </button>
+            </div>
+        </div>
+    }
+</div>
+
+<nav>
+    <ul class="pagination d-flex justify-content-center mb-4">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            string activeClass = "";
+            string linkClass = "page-link";
+
+            if (i == ViewBag.PageIndex)
+            {
+                activeClass = "active";
+                linkClass += " bg-success text-white";
+            }
+
+            <li class="page-item @activeClass">
+                <a class="@linkClass"
+                   asp-route-pageIndex="@i"
+                   asp-route-search="@Model.Search"
+                   asp-route-brand="@Model.Brand"
+                   asp-route-gender="@Model.Gender"
+                   asp-route-size="@Model.Size"
+                   asp-route-category="@Model.Category"
+                   asp-route-sort="@Model.Sort"
+                   style="border-color:lightgray; color: @((i == ViewBag.PageIndex) ? "white" : "green");">
+                    @i
+                </a>
+            </li>
+        }
+    </ul>
+</nav>
+
