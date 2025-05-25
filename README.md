@@ -51,7 +51,7 @@ Update-Database
 },
 ```
 
-### 5. Populate the Products Table
+### 5. Enter data into the Products Table
 - To add sample products to the database, you can execute the following SQL script:
 ```sql
 INSERT INTO [ThriftStoreDB].[dbo].[Products] 
