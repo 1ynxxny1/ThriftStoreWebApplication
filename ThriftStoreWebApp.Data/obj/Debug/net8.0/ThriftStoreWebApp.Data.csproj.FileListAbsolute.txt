@@ -1,0 +1,14 @@
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Data\bin\Debug\net8.0\ThriftStoreWebApp.Data.deps.json
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Data\bin\Debug\net8.0\ThriftStoreWebApp.Data.runtimeconfig.json
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Data\bin\Debug\net8.0\ThriftStoreWebApp.Data.dll
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Data\bin\Debug\net8.0\ThriftStoreWebApp.Data.pdb
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Data\obj\Debug\net8.0\ThriftStoreWebApp.Data.csproj.AssemblyReference.cache
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Data\obj\Debug\net8.0\ThriftStoreWebApp.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Data\obj\Debug\net8.0\ThriftStoreWebApp.Data.AssemblyInfoInputs.cache
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Data\obj\Debug\net8.0\ThriftStoreWebApp.Data.AssemblyInfo.cs
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Data\obj\Debug\net8.0\ThriftStoreWebApp.Data.csproj.CoreCompileInputs.cache
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Data\obj\Debug\net8.0\ThriftStoreWebApp.Data.dll
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Data\obj\Debug\net8.0\refint\ThriftStoreWebApp.Data.dll
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Data\obj\Debug\net8.0\ThriftStoreWebApp.Data.pdb
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Data\obj\Debug\net8.0\ThriftStoreWebApp.Data.genruntimeconfig.cache
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Data\obj\Debug\net8.0\ref\ThriftStoreWebApp.Data.dll

@@ -1,4 +1,4 @@
-﻿@model Order
+﻿@model ThriftStoreWebApp.Service.DTOs.OrderDto
 @{
     string paymentBadgeColor = "bg-danger";
 
@@ -205,9 +205,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        
-          <form method="get" asp-controller="AdminOrders" asp-action="Edit">
-              <input type="hidden" name="id" value="@Model.Id" />
+
+                <form method="post" asp-controller="AdminOrders" asp-action="Edit">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@Model.Id" />
               <label>Payment Status</label>
               <select class="form-select mb-2" name="payment_status" asp-for="PaymentStatus">
                   <option value="pending">pending</option>
@@ -234,7 +235,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="get" asp-controller="AdminOrders" asp-action="Edit">
+                <form method="post" asp-controller="AdminOrders" asp-action="Edit">
+                    @Html.AntiForgeryToken()
                     <input type="hidden" name="id" value="@Model.Id" />
                     <label>Order Status</label>
                     <select class="form-select mb-2" name="order_status" asp-for="OrderStatus">
@@ -255,4 +257,3 @@
         </div>
     </div>
 </div>
-

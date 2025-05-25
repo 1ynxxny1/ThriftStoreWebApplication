@@ -1,7 +1,4 @@
 ﻿@model ApplicationUser
-@{
-
-}
 
 <div class="row">
     <div class="col-lg-6 mx-auto rounded border p-4">
@@ -52,55 +49,42 @@
             <div class="col-sm-4">Role</div>
             <div class="col-sm-8">
                 @{
-                    var roles = ViewBag.Roles;
-                    var rolesStr = String.Join(", ", roles);
+                    var roles = ViewBag.Roles as List<string> ?? new List<string>();
+                    var rolesStr = string.Join(", ", roles);
+                    string color = roles.Contains("admin") ? "bg-dark"
+                                  : roles.Contains("seller") ? "bg-info text-dark"
+                                  : roles.Contains("client") ? "bg-warning text-dark"
+                                  : "bg-secondary";
+                }
+                <span class="badge rounded-pill @color">@rolesStr</span>
 
-                    string color = "bg-secondary";
-                    if (roles.Contains("admin"))
-                    {
-                        color = "bg-dark";
-                    }
-                    else if (roles.Contains("seller"))
-                    {
-                        color = "bg-info text-dark";
-                    }
-                    else if (roles.Contains("client"))
-                    {
-                        color = "bg-warning text-dark";
-                    }
-                    <span class="badge rounded-pill @color">@rolesStr</span>
+                <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#roleModal">
+                    Edit
+                </button>
 
-                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#roleModal">
-                        Edit
-                    </button>
-
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="roleModal" tabindex="-1">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5">Edit User Role</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form method="get" asp-controller="Users" asp-action="EditRole">
-                                        <input type="hidden" value="@Model.Id" name="id" />
-                                        <label>Select user role</label>
-                                        <select class="form-select mb-2" name="newRole" asp-items="@ViewBag.SelectItems">
-                                        </select>
-                                        <button type="submit" class="btn btn-success">Submit</button>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                </div>
+                <!-- Role Modal -->
+                <div class="modal fade" id="roleModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5">Edit User Role</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="get" asp-controller="Users" asp-action="EditRole">
+                                    <input type="hidden" value="@Model.Id" name="id" />
+                                    <label>Select user role</label>
+                                    <select class="form-select mb-2" name="newRole" asp-items="@ViewBag.SelectItems">
+                                    </select>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
-                }
-                
-
+                </div>
             </div>
         </div>
 
@@ -108,8 +92,8 @@
             <div class="col-sm-4">Created At</div>
             <div class="col-sm-8">@Model.CreatedAt</div>
         </div>
-        <hr />
 
+        <hr />
         <div>
             <a class="btn btn-success" asp-controller="Users" asp-action="Index">Back</a>
 
@@ -118,7 +102,7 @@
             </button>
         </div>
 
-        <!-- Modal -->
+        <!-- Delete Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -137,3 +121,5 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>

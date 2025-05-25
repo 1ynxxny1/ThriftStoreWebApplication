@@ -1,6 +1,4 @@
-﻿@{
-    var orders = ViewBag.Orders as List<Order>;
-}
+﻿@model List<ThriftStoreWebApp.Service.DTOs.OrderDto>
 
 <h3 class="text-center mb-4">List of Orders</h3>
 
@@ -8,7 +6,7 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Clients</th>
+            <th>Client</th>
             <th>Units</th>
             <th>Total</th>
             <th>Payment Method</th>
@@ -20,67 +18,42 @@
     </thead>
 
     <tbody>
-        @if (orders != null)
+        @if (Model != null && Model.Any())
         {
-            foreach (Order order in orders)
+            foreach (var order in Model)
             {
                 int count = 0;
                 decimal total = order.ShippingFee;
-                foreach (OrderItem item in order.Items)
+
+                foreach (var item in order.Items)
                 {
                     count += item.Quantity;
                     total += item.Quantity * item.UnitPrice;
                 }
 
-                string paymentBadgeColor = "bg-danger";
+                string paymentBadgeColor = order.PaymentStatus switch
+                {
+                    "pending" => "bg-warning text-dark",
+                    "accepted" => "bg-success",
+                    "canceled" => "bg-secondary",
+                    _ => "bg-danger"
+                };
 
-                if (order.PaymentStatus == "pending")
+                string orderBadgeColor = order.OrderStatus switch
                 {
-                    paymentBadgeColor = "bg-warning text-dark";
-                }
-                else if (order.PaymentStatus == "accepted")
-                {
-                    paymentBadgeColor = "bg-success";
-                }
-                else if (order.PaymentStatus == "canceled")
-                {
-                    paymentBadgeColor = "bg-secondary";
-                }
-
-
-                string orderBadgeColor = "bg-danger";
-                if (order.OrderStatus == "created")
-                {
-                    orderBadgeColor = "bg-warning text-dark";
-                }
-                else if (order.OrderStatus == "accepted")
-                {
-                    orderBadgeColor = "bg-success";
-                }
-                else if (order.OrderStatus == "canceled")
-                {
-                    orderBadgeColor = "bg-secondary";
-                }
-                else if (order.OrderStatus == "shipped")
-                {
-                    orderBadgeColor = "bg-primary";
-                }
-                else if (order.OrderStatus == "delivered")
-                {
-                    orderBadgeColor = "bg-success";
-                }
-                else if (order.OrderStatus == "returned")
-                {
-                    orderBadgeColor = "bg-info text-dark";
-                }
-                else if (order.OrderStatus == "deleted")
-                {
-                    orderBadgeColor = "bg-dark";
-                }
+                    "created" => "bg-warning text-dark",
+                    "accepted" => "bg-success",
+                    "canceled" => "bg-secondary",
+                    "shipped" => "bg-primary",
+                    "delivered" => "bg-success",
+                    "returned" => "bg-info text-dark",
+                    "deleted" => "bg-dark",
+                    _ => "bg-danger"
+                };
 
                 <tr>
                     <td>@order.Id</td>
-                    <td>@(order.Client.FirstName + " " + order.Client.LastName)</td>
+                    <td>@order.ClientEmail</td>
                     <td>@count</td>
                     <td>@(total)MKD</td>
                     <td>@order.PaymentMethod</td>
@@ -107,14 +80,8 @@
     <ul class="pagination d-flex justify-content-center mb-4">
         @for (int i = 1; i <= ViewBag.TotalPages; i++)
         {
-            string activeClass = "";
-            string linkClass = "page-link";
-
-            if (i == ViewBag.PageIndex)
-            {
-                activeClass = "active";
-                linkClass += " bg-success text-white";
-            }
+            string activeClass = i == ViewBag.PageIndex ? "active" : "";
+            string linkClass = "page-link" + (i == ViewBag.PageIndex ? " bg-success text-white" : "");
 
             <li class="page-item @activeClass">
                 <a class="@linkClass" asp-route-pageIndex="@i"
@@ -125,5 +92,3 @@
         }
     </ul>
 </nav>
-
-

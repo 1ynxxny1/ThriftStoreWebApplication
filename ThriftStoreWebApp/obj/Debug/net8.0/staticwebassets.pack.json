@@ -1,300 +1,304 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ThriftStoreWebApp.bundle.scp.css",
-      "PackagePath": "staticwebassets\\ThriftStoreWebApp.bundle.scp.css"
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ThriftStoreWebApp.bundle.scp.css",
+      "PackagePath": "staticwebassets\\ThriftStoreWebApp.htdwim8iin.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\css\\site.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\images\\hero.png",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\images\\hero.png",
       "PackagePath": "staticwebassets\\images\\hero.png"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\images\\icon.png",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\images\\icon.png",
       "PackagePath": "staticwebassets\\images\\icon.png"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\js\\site.js",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\products images\\202410041656345.jpg",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\products images\\202410041656345.jpg",
       "PackagePath": "staticwebassets\\products images\\202410041656345.jpg"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\products images\\202410041656411.jpg",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\products images\\202410041656411.jpg",
       "PackagePath": "staticwebassets\\products images\\202410041656411.jpg"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\products images\\MCargo.jpg",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\products images\\MCargo.jpg",
       "PackagePath": "staticwebassets\\products images\\MCargo.jpg"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\products images\\MJacket.jpg",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\products images\\MJacket.jpg",
       "PackagePath": "staticwebassets\\products images\\MJacket.jpg"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\products images\\MShoes.jpg",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\products images\\MShoes.jpg",
       "PackagePath": "staticwebassets\\products images\\MShoes.jpg"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\products images\\Msun.jpg",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\products images\\Msun.jpg",
       "PackagePath": "staticwebassets\\products images\\Msun.jpg"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\products images\\WCoat.jpg",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\products images\\WCoat.jpg",
       "PackagePath": "staticwebassets\\products images\\WCoat.jpg"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\products images\\WJeans.jpg",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\products images\\WJeans.jpg",
       "PackagePath": "staticwebassets\\products images\\WJeans.jpg"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\products images\\WShirt.jpg",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\products images\\WShirt.jpg",
       "PackagePath": "staticwebassets\\products images\\WShirt.jpg"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\products images\\WShoes.jpg",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\products images\\WShoes.jpg",
       "PackagePath": "staticwebassets\\products images\\WShoes.jpg"
     },
     {
-      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp\\ThriftStoreWebApp\\wwwroot\\products images\\WSun.jpg",
+      "Id": "C:\\Users\\deabi\\source\\repos\\ThriftStoreWebApp - Copy\\ThriftStoreWebApp\\wwwroot\\products images\\WSun.jpg",
       "PackagePath": "staticwebassets\\products images\\WSun.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ThriftStoreWebApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ThriftStoreWebApp.Microsoft.AspNetCore.StaticWebAssets.props",

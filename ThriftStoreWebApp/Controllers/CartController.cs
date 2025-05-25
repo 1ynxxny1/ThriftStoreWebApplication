@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using ThriftStoreWebApp.Data.Interfaces;
 using ThriftStoreWebApp.Models;
 using ThriftStoreWebApp.Services;
 
@@ -8,28 +9,32 @@ namespace ThriftStoreWebApp.Controllers
 {
     public class CartController : Controller
     {
-        private readonly ApplicationDbContext context;
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly decimal shippingFee;
+        private readonly IProductRepository _productRepository;
+        private readonly IOrderRepository _orderRepository;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly decimal _shippingFee;
 
-        public CartController(ApplicationDbContext context, IConfiguration configuration,
-            UserManager<ApplicationUser> userManager)
+        public CartController(
+            IProductRepository productRepository,
+            IOrderRepository orderRepository,
+            UserManager<ApplicationUser> userManager,
+            IConfiguration configuration)
         {
-            this.context = context;
-            this.userManager = userManager;
-            shippingFee = configuration.GetValue<decimal>("CartSettings:ShippingFee");
+            _productRepository = productRepository;
+            _orderRepository = orderRepository;
+            _userManager = userManager;
+            _shippingFee = configuration.GetValue<decimal>("CartSettings:ShippingFee");
         }
+
         public IActionResult Index()
         {
-            List<OrderItem> cartItems = CartHelper.GetCartItems(Request, Response, context);
-            decimal subtotal = CartHelper.GetSubtotal(cartItems);
-
+            var cartItems = CartHelper.GetCartItems(Request, Response, _productRepository);
+            var subtotal = CartHelper.GetSubtotal(cartItems);
 
             ViewBag.CartItems = cartItems;
-            ViewBag.ShippingFee = shippingFee;
+            ViewBag.ShippingFee = _shippingFee;
             ViewBag.Subtotal = subtotal;
-            ViewBag.Total = subtotal + shippingFee;
-
+            ViewBag.Total = subtotal + _shippingFee;
 
             return View();
         }
@@ -38,21 +43,18 @@ namespace ThriftStoreWebApp.Controllers
         [HttpPost]
         public IActionResult Index(CheckoutDto model)
         {
-            List<OrderItem> cartItems = CartHelper.GetCartItems(Request, Response, context);
-            decimal subtotal = CartHelper.GetSubtotal(cartItems);
-
+            var cartItems = CartHelper.GetCartItems(Request, Response, _productRepository);
+            var subtotal = CartHelper.GetSubtotal(cartItems);
 
             ViewBag.CartItems = cartItems;
-            ViewBag.ShippingFee = shippingFee;
+            ViewBag.ShippingFee = _shippingFee;
             ViewBag.Subtotal = subtotal;
-            ViewBag.Total = subtotal + shippingFee;
+            ViewBag.Total = subtotal + _shippingFee;
 
             if (!ModelState.IsValid)
-            {
                 return View(model);
-            }
 
-            if (cartItems.Count == 0)
+            if (!cartItems.Any())
             {
                 ViewBag.ErrorMessage = "Your cart is empty";
                 return View(model);
@@ -64,25 +66,18 @@ namespace ThriftStoreWebApp.Controllers
             return RedirectToAction("Confirm");
         }
 
-
         public IActionResult Confirm()
         {
-            List<OrderItem> cartItems = CartHelper.GetCartItems(Request, Response, context);
-            decimal total = CartHelper.GetSubtotal(cartItems) + shippingFee;
-            int cartSize = 0;
-            foreach (var item in cartItems)
-            {
-                cartSize += item.Quantity;
-            }
+            var cartItems = CartHelper.GetCartItems(Request, Response, _productRepository);
+            var total = CartHelper.GetSubtotal(cartItems) + _shippingFee;
+            var cartSize = cartItems.Sum(item => item.Quantity);
 
-            string deliveryAddress = TempData["DeliveryAddress"] as string ?? "";
-            string paymentMethod = TempData["PaymentMethod"] as string ?? "";
+            var deliveryAddress = TempData["DeliveryAddress"] as string ?? "";
+            var paymentMethod = TempData["PaymentMethod"] as string ?? "";
             TempData.Keep();
 
-            if (cartSize == 0 || deliveryAddress.Length == 0 || paymentMethod.Length == 0)
-            {
+            if (cartSize == 0 || string.IsNullOrEmpty(deliveryAddress) || string.IsNullOrEmpty(paymentMethod))
                 return RedirectToAction("Index", "Home");
-            }
 
             ViewBag.DeliveryAddress = deliveryAddress;
             ViewBag.PaymentMethod = paymentMethod;
@@ -96,46 +91,61 @@ namespace ThriftStoreWebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Confirm(int any)
         {
-            var cartItems = CartHelper.GetCartItems(Request, Response, context);
+            var cartItems = CartHelper.GetCartItems(Request, Response, _productRepository);
 
-            string deliveryAddress = TempData["DeliveryAddress"] as string ?? "";
-            string paymentMethod = TempData["PaymentMethod"] as string ?? "";
+            var deliveryAddress = TempData["DeliveryAddress"] as string ?? "";
+            var paymentMethod = TempData["PaymentMethod"] as string ?? "";
             TempData.Keep();
 
-            if (cartItems.Count == 0 || deliveryAddress.Length == 0 || paymentMethod.Length == 0)
-            {
+            if (!cartItems.Any() || string.IsNullOrEmpty(deliveryAddress) || string.IsNullOrEmpty(paymentMethod))
                 return RedirectToAction("Index", "Home");
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+                return RedirectToAction("Index", "Home");
+
+            var unavailableItems = new List<string>();
+
+            foreach (var item in cartItems)
+            {
+                var product = await _productRepository.GetByIdAsync(item.Product.Id);
+                if (product == null || !product.Availability)
+                    unavailableItems.Add(item.Product.Name);
             }
 
-            var appUser = await userManager.GetUserAsync(User);
-            if (appUser == null)
+            if (unavailableItems.Any())
             {
-                return RedirectToAction("Index", "Home");
+                TempData["ErrorMessage"] = "The following items are no longer available: " + string.Join(", ", unavailableItems);
+                return RedirectToAction("Index");
+            }
+
+            foreach (var item in cartItems)
+            {
+                var product = await _productRepository.GetByIdAsync(item.Product.Id);
+                product.Availability = false;
+                await _productRepository.UpdateAsync(product);
             }
 
             var order = new Order
             {
-                ClientId = appUser.Id,
+                ClientId = user.Id,
                 Items = cartItems,
-                ShippingFee = shippingFee,
+                ShippingFee = _shippingFee,
                 DeliveryAddress = deliveryAddress,
                 PaymentMethod = paymentMethod,
                 PaymentStatus = "pending",
                 PaymentDetails = "",
                 OrderStatus = "created",
-                CreatedAt = DateTime.Now,
+                CreatedAt = DateTime.Now
             };
 
-            context.Orders.Add(order);
-            context.SaveChanges();
-
+            await _orderRepository.AddAsync(order);
+            await _orderRepository.SaveChangesAsync();
 
             Response.Cookies.Delete("shopping_cart");
 
             ViewBag.SuccessMessage = "Order created successfully!";
-
             return View();
         }
     }
-
 }

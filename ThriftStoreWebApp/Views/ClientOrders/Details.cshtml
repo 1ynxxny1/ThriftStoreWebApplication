@@ -1,50 +1,25 @@
-﻿@model Order
+﻿@model OrderDto
+
 @{
-    string paymentBadgeColor = "bg-danger";
+    string paymentBadgeColor = Model.PaymentStatus switch
+    {
+        "pending" => "bg-warning text-dark",
+        "accepted" => "bg-success",
+        "canceled" => "bg-secondary",
+        _ => "bg-danger"
+    };
 
-    if (Model.PaymentStatus == "pending")
+    string orderBadgeColor = Model.OrderStatus switch
     {
-        paymentBadgeColor = "bg-warning text-dark";
-    }
-    else if (Model.PaymentStatus == "accepted")
-    {
-        paymentBadgeColor = "bg-success";
-    }
-    else if (Model.PaymentStatus == "canceled")
-    {
-        paymentBadgeColor = "bg-secondary";
-    }
-
-
-    string orderBadgeColor = "bg-danger";
-    if (Model.OrderStatus == "created")
-    {
-        orderBadgeColor = "bg-warning text-dark";
-    }
-    else if (Model.OrderStatus == "accepted")
-    {
-        orderBadgeColor = "bg-success";
-    }
-    else if (Model.OrderStatus == "canceled")
-    {
-        orderBadgeColor = "bg-secondary";
-    }
-    else if (Model.OrderStatus == "shipped")
-    {
-        orderBadgeColor = "bg-primary";
-    }
-    else if (Model.OrderStatus == "delivered")
-    {
-        orderBadgeColor = "bg-success";
-    }
-    else if (Model.OrderStatus == "returned")
-    {
-        orderBadgeColor = "bg-info text-dark";
-    }
-    else if (Model.OrderStatus == "deleted")
-    {
-        orderBadgeColor = "bg-dark";
-    }
+        "created" => "bg-warning text-dark",
+        "accepted" => "bg-success",
+        "canceled" => "bg-secondary",
+        "shipped" => "bg-primary",
+        "delivered" => "bg-success",
+        "returned" => "bg-info text-dark",
+        "deleted" => "bg-dark",
+        _ => "bg-danger"
+    };
 }
 
 <h3 class="text-center mb-4">Order Details</h3>
@@ -78,7 +53,6 @@
                 </div>
             </div>
 
-
             <div class="row mb-2 pb-2 border-bottom">
                 <div class="col">Order Status</div>
                 <div class="col">
@@ -88,12 +62,11 @@
 
             <div class="row mb-2">
                 <div class="col">Order Date</div>
-                <div class="col">@Model.CreatedAt.ToString("g")</div> <!-- Format Date -->
+                <div class="col">@Model.CreatedAt.ToString("g")</div>
             </div>
         </div>
     </div>
-
-  
+</div>
 
 <table class="table">
     <thead>
@@ -110,7 +83,6 @@
             foreach (var item in Model.Items)
             {
                 subtotal += item.UnitPrice * item.Quantity;
-
                 <tr>
                     <td>
                         <img src="~/products images/@item.Product.ImageFileName" width="100" alt="@item.Product.Name" />

@@ -1,79 +1,71 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ThriftStoreWebApp.Data.Interfaces;
 using ThriftStoreWebApp.Models;
-using ThriftStoreWebApp.Services;
 
 namespace ThriftStoreWebApp.Controllers
 {
     public class StoreController : Controller
     {
-        private readonly ApplicationDbContext context;
-        private readonly int pageSize = 8;
+        private readonly IProductRepository _productRepository;
+        private readonly int _pageSize = 8;
 
-        public StoreController(ApplicationDbContext context)
+        public StoreController(IProductRepository productRepository)
         {
-            this.context = context;
+            _productRepository = productRepository;
         }
 
-        public IActionResult Index(int pageIndex, string? search, string? brand, string? gender, string? size, string? category, string? sort)
+        public IActionResult Index(
+            int pageIndex,
+            string? search,
+            string? brand,
+            string? gender,
+            string? size,
+            string? category,
+            string? sort)
         {
-            IQueryable<Product> query = context.Products;
+            IQueryable<Product> query = _productRepository.GetAvailable();
 
-            if (search != null && search.Length > 0)
-            {
+            // Filtering
+            if (!string.IsNullOrWhiteSpace(search))
                 query = query.Where(p => p.Name.Contains(search));
-            }
 
-            if (brand != null && brand.Length > 0)
-            {
+            if (!string.IsNullOrWhiteSpace(brand))
                 query = query.Where(p => p.Brand.Contains(brand));
-            }
 
-            if (!string.IsNullOrEmpty(gender))
-            {
+            if (!string.IsNullOrWhiteSpace(gender))
                 query = query.Where(p => p.Gender.ToLower() == gender.ToLower());
-            }
 
-
-            if (size != null && size.Length > 0)
-            {
+            if (!string.IsNullOrWhiteSpace(size))
                 query = query.Where(p => p.Size.Contains(size));
-            }
 
-            if (category != null && category.Length > 0)
-            {
+            if (!string.IsNullOrWhiteSpace(category))
                 query = query.Where(p => p.Category.Contains(category));
-            }
 
-            if (sort == "price_asc")
+            // Sorting
+            query = sort switch
             {
-                query = query.OrderBy(p => p.Price);
-            }
-            else if (sort == "price_desc")
-            {
-                query = query.OrderByDescending(p => p.Price);
-            }
-            else
-            {
-                query = query.OrderByDescending(p => p.Id);
-            }
+                "price_asc" => query.OrderBy(p => p.Price),
+                "price_desc" => query.OrderByDescending(p => p.Price),
+                _ => query.OrderByDescending(p => p.Id)
+            };
 
+            // Pagination
+            if (pageIndex < 1) pageIndex = 1;
 
-            if (pageIndex < 1)
-            {
-                pageIndex = 1;
-            }
+            int totalItems = query.Count();
+            int totalPages = (int)Math.Ceiling(totalItems / (double)_pageSize);
 
-            decimal count = query.Count();
-            int totalPages = (int)Math.Ceiling(count / pageSize);
-            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            var products = query
+                .Skip((pageIndex - 1) * _pageSize)
+                .Take(_pageSize)
+                .ToList();
 
-            var products = query.ToList();
-
+            // Data to View
             ViewBag.Products = products;
             ViewBag.PageIndex = pageIndex;
             ViewBag.TotalPages = totalPages;
 
-            var storeSearchModel = new StoreSearchModel()
+            var storeSearchModel = new StoreSearchModel
             {
                 Search = search,
                 Brand = brand,
@@ -86,14 +78,13 @@ namespace ThriftStoreWebApp.Controllers
             return View(storeSearchModel);
         }
 
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var product = context.Products.Find(id);
+            var product = await _productRepository.GetByIdAsync(id);
             if (product == null)
-            {
-                return RedirectToAction("Index", "Store");
-            }
-            return View(product); 
+                return RedirectToAction("Index");
+
+            return View(product);
         }
     }
 }

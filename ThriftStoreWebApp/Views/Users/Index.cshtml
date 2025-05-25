@@ -1,8 +1,6 @@
 ﻿@model List<ApplicationUser>
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager
-@{
-}
 
 <h2 class="text-center mb-5">List of Users</h2>
 
@@ -21,36 +19,24 @@
     <tbody>
         @foreach (var user in Model)
         {
+            var roles = await UserManager.GetRolesAsync(user);
+            var rolesStr = string.Join(", ", roles);
+            string color = roles.Contains("admin") ? "bg-dark"
+            : roles.Contains("seller") ? "bg-info text-dark"
+            : roles.Contains("client") ? "bg-warning text-dark"
+            : "bg-secondary";
+
             <tr>
                 <td>@(user.FirstName + " " + user.LastName)</td>
                 <td>@user.Email</td>
                 <td>@user.PhoneNumber</td>
                 <td>
-                    @{
-                        var roles = await UserManager.GetRolesAsync(user);
-                        var rolesStr = String.Join(", ", roles);
-
-                        string color = "bg-secondary";
-                        if (roles.Contains("admin"))
-                        {
-                            color = "bg-dark";
-                        }
-                        else if (roles.Contains("seller"))
-                        {
-                            color = "bg-info text-dark";
-                        }
-                        else if (roles.Contains("client"))
-                        {
-                            color = "bg-warning text-dark";
-                        }
-                    }
-
                     <span class="badge rounded-pill @color">@rolesStr</span>
                 </td>
                 <td>@user.CreatedAt.ToString("dd/MM/yyyy")</td>
                 <td>
                     <a class="btn btn-success btn-sm" asp-controller="Users" asp-action="Details"
-                       asp-route-id="@user.Id">Details</a> <!-- Fixed the tag and href -->
+                       asp-route-id="@user.Id">Details</a>
                 </td>
             </tr>
         }
@@ -61,14 +47,8 @@
     <ul class="pagination d-flex justify-content-center mb-4">
         @for (int i = 1; i <= ViewBag.TotalPages; i++)
         {
-            string activeClass = "";
-            string linkClass = "page-link";
-
-            if (i == ViewBag.PageIndex)
-            {
-                activeClass = "active";
-                linkClass += " bg-success text-white"; 
-            }
+            string activeClass = i == ViewBag.PageIndex ? "active" : "";
+            string linkClass = "page-link" + (i == ViewBag.PageIndex ? " bg-success text-white" : "");
 
             <li class="page-item @activeClass">
                 <a class="@linkClass"

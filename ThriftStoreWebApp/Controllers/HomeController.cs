@@ -1,23 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using ThriftStoreWebApp.Data.Interfaces;
 using ThriftStoreWebApp.Models;
-using ThriftStoreWebApp.Services;
 
 namespace ThriftStoreWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ApplicationDbContext context;
+        private readonly IProductRepository _productRepository;
 
-        public HomeController(ApplicationDbContext context)
+        public HomeController(IProductRepository productRepository)
         {
-            this.context = context;
+            _productRepository = productRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var products = context.Products.OrderByDescending(p => p.Id).Take(4).ToList();
-            return View(products);
+            var latestProducts = await _productRepository.GetLatestAvailableAsync(4);
+            return View(latestProducts);
         }
 
         public IActionResult Privacy()
@@ -28,7 +28,11 @@ namespace ThriftStoreWebApp.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var errorModel = new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View(errorModel);
         }
     }
 }

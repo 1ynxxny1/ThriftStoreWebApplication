@@ -1,77 +1,74 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using ThriftStoreWebApp.Data.Interfaces;
 using ThriftStoreWebApp.Models;
-using ThriftStoreWebApp.Services;
+using ThriftStoreWebApp.Service.DTOs;
 
 namespace ThriftStoreWebApp.Controllers
 {
-    [Authorize(Roles ="client")]
+    [Authorize(Roles = "client")]
     [Route("/Client/Orders/{action=Index}/{id?}")]
     public class ClientOrdersController : Controller
     {
-        private readonly ApplicationDbContext context;
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly int pageSize = 5;
+        private readonly IOrderRepository _orderRepository;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IMapper _mapper;
+        private const int PageSize = 5;
 
-        public ClientOrdersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public ClientOrdersController(
+            IOrderRepository orderRepository,
+            UserManager<ApplicationUser> userManager,
+            IMapper mapper)
         {
-            this.context = context;
-            this.userManager = userManager;
+            _orderRepository = orderRepository;
+            _userManager = userManager;
+            _mapper = mapper;
         }
+
         public async Task<IActionResult> Index(int pageIndex)
         {
-            var currentUser = await userManager.GetUserAsync(User);
+            if (pageIndex <= 0) pageIndex = 1;
+
+            var currentUser = await _userManager.GetUserAsync(User);
             if (currentUser == null)
-            {
                 return RedirectToAction("Index", "Home");
-            }
 
-            IQueryable<Order> query = context.Orders
-                .Include(o => o.Items).OrderByDescending(o => o.Id)
-                .Where(o => o.ClientId == currentUser.Id);
+            var ordersQuery = _orderRepository
+                .GetAll()
+                .Where(o => o.ClientId == currentUser.Id)
+                .OrderByDescending(o => o.Id);
 
-            if (pageIndex <= 0)
-            {
-                pageIndex = 1;
-            }
+            int totalCount = ordersQuery.Count();
+            int totalPages = (int)Math.Ceiling(totalCount / (double)PageSize);
 
-            decimal count = query.Count();
-            int totalPages = (int)Math.Ceiling(count / pageSize);
+            var pagedOrders = ordersQuery
+                .Skip((pageIndex - 1) * PageSize)
+                .Take(PageSize)
+                .ToList();
 
-            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            var orderDtos = _mapper.Map<List<OrderDto>>(pagedOrders);
 
-
-            var orders = query.ToList();
-
-            ViewBag.Orders = orders;
+            ViewBag.Orders = orderDtos;
             ViewBag.PageIndex = pageIndex;
             ViewBag.TotalPages = totalPages;
 
-            return View();
+            return View(orderDtos);
         }
 
         public async Task<IActionResult> Details(int id)
         {
-            var currentUser = await userManager.GetUserAsync(User);
+            var currentUser = await _userManager.GetUserAsync(User);
             if (currentUser == null)
-            {
                 return RedirectToAction("Index", "Home");
-            }
 
-            var order = context.Orders
-                .Include(o => o.Items)
-                    .ThenInclude(oi => oi.Product)
-                    .Where(o => o.ClientId == currentUser.Id)
-                .FirstOrDefault(o => o.Id == id);
-            
-            if (order == null)
-            {
-                return RedirectToAction("Index"); 
-            }
+            var order = await _orderRepository.GetDetailedByIdAsync(id);
+            if (order == null || order.ClientId != currentUser.Id)
+                return RedirectToAction("Index");
 
-            return View(order);
+            var orderDto = _mapper.Map<OrderDto>(order);
+            return View(orderDto);
         }
     }
 }

@@ -42,14 +42,14 @@
                 }
             }
 
-            return {}; // Return empty object if no valid cart is found
+            return {}; 
         }
 
         function saveCart(cart) {
-            // Encode the cart object as a Base64 string
+            
             let cartStr = btoa(JSON.stringify(cart));
 
-            // Set cookie to expire in 365 days
+            
             let d = new Date();
             d.setDate(d.getDate() + 365);
             let expires = "expires=" + d.toUTCString();
@@ -143,9 +143,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Store" asp-action="Index">Store</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
 
@@ -247,7 +244,7 @@
     <footer class="border-top footer text-muted">
         <div class="container text-center d-flex justify-content-center align-items-center py-3">
             <img src="/images/icon.png" alt="..." width="30" class="me-2" />
-            &copy; 2024 - Thrift Avenue - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - Thrift Avenue
         </div>
     </footer>
 

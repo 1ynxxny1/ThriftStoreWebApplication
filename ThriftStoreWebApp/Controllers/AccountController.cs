@@ -9,224 +9,173 @@ namespace ThriftStoreWebApp.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly SignInManager<ApplicationUser> signInManager;
-        private readonly IConfiguration configuration;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IConfiguration _configuration;
 
-        public AccountController(UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager, IConfiguration configuration)
+        public AccountController(
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
+            IConfiguration configuration)
         {
-            this.userManager = userManager;
-            this.signInManager = signInManager;
-            this.configuration = configuration;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _configuration = configuration;
         }
+
         public IActionResult Register()
         {
-            if (signInManager.IsSignedIn(User))
-            {
+            if (_signInManager.IsSignedIn(User))
                 return RedirectToAction("Index", "Home");
-            }
 
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterDTO registerDTO)
+        public async Task<IActionResult> Register(RegisterDTO dto)
         {
-            if (signInManager.IsSignedIn(User))
-            {
+            if (_signInManager.IsSignedIn(User))
                 return RedirectToAction("Index", "Home");
-            }
 
             if (!ModelState.IsValid)
-            {
-                return View(registerDTO);
-            }
+                return View(dto);
 
-            var user = new ApplicationUser()
+            var user = new ApplicationUser
             {
-                FirstName = registerDTO.FirstName,
-                LastName = registerDTO.LastName,
-                UserName = registerDTO.Email,
-                Email = registerDTO.Email,
-                PhoneNumber = registerDTO.PhoneNumber,
-                Address = registerDTO.Address,
-                CreatedAt = DateTime.UtcNow,
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
+                UserName = dto.Email,
+                Email = dto.Email,
+                PhoneNumber = dto.PhoneNumber,
+                Address = dto.Address,
+                CreatedAt = DateTime.UtcNow
             };
 
-            var result = await userManager.CreateAsync(user, registerDTO.Password);
-
+            var result = await _userManager.CreateAsync(user, dto.Password);
             if (result.Succeeded)
             {
-                await userManager.AddToRoleAsync(user, "client");
-
-                await signInManager.SignInAsync(user, false);
-
+                await _userManager.AddToRoleAsync(user, "client");
+                await _signInManager.SignInAsync(user, isPersistent: false);
                 return RedirectToAction("Index", "Home");
             }
 
             foreach (var error in result.Errors)
-            {
                 ModelState.AddModelError("", error.Description);
-            }
 
-            return View(registerDTO);
+            return View(dto);
         }
 
         public async Task<IActionResult> Logout()
         {
-            if (signInManager.IsSignedIn(User))
-            {
-                await signInManager.SignOutAsync();
-            }
+            if (_signInManager.IsSignedIn(User))
+                await _signInManager.SignOutAsync();
 
             return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Login()
         {
-            if (signInManager.IsSignedIn(User))
-            {
+            if (_signInManager.IsSignedIn(User))
                 return RedirectToAction("Index", "Home");
-            }
 
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginDto loginDto)
+        public async Task<IActionResult> Login(LoginDto dto)
         {
-            if (signInManager.IsSignedIn(User))
-            {
+            if (_signInManager.IsSignedIn(User))
                 return RedirectToAction("Index", "Home");
-            }
 
             if (!ModelState.IsValid)
-            {
-                return View(loginDto);
-            }
+                return View(dto);
 
-            var result = await signInManager.PasswordSignInAsync(loginDto.Email, loginDto.Password,
-                loginDto.RememberMe, false);
+            var result = await _signInManager.PasswordSignInAsync(dto.Email, dto.Password, dto.RememberMe, false);
 
             if (result.Succeeded)
-            {
                 return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                ViewBag.ErrorMessage = "Invalid login attempt.";
-            }
 
-            return View(loginDto);
+            ViewBag.ErrorMessage = "Invalid login attempt.";
+            return View(dto);
         }
 
         [Authorize]
         public async Task<IActionResult> Profile()
         {
-            var appUser = await userManager.GetUserAsync(User);
-            if (appUser == null)
-            {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
                 return RedirectToAction("Index", "Home");
-            }
 
-            var profileDto = new ProfileDto()
+            var dto = new ProfileDto
             {
-                FirstName = appUser.FirstName,
-                LastName = appUser.LastName,
-                Email = appUser.Email ?? "",
-                PhoneNumber = appUser.PhoneNumber,
-                Address = appUser.Address,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email ?? "",
+                PhoneNumber = user.PhoneNumber,
+                Address = user.Address
             };
 
-            return View(profileDto);
+            return View(dto);
         }
 
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> Profile(ProfileDto profileDto)
+        [Authorize, HttpPost]
+        public async Task<IActionResult> Profile(ProfileDto dto)
         {
             if (!ModelState.IsValid)
             {
                 ViewBag.ErrorMessage = "Please fill all the required fields with valid values.";
-                return View(profileDto);
+                return View(dto);
             }
 
-            var appUser = await userManager.GetUserAsync(User);
-            if (appUser == null)
-            {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
                 return RedirectToAction("Index", "Home");
-            }
 
-            appUser.FirstName = profileDto.FirstName;
-            appUser.LastName = profileDto.LastName;
-            appUser.UserName = profileDto.Email;
-            appUser.Email = profileDto.Email;
-            appUser.PhoneNumber = profileDto.PhoneNumber;
-            appUser.Address = profileDto.Address;
+            user.FirstName = dto.FirstName;
+            user.LastName = dto.LastName;
+            user.UserName = dto.Email;
+            user.Email = dto.Email;
+            user.PhoneNumber = dto.PhoneNumber;
+            user.Address = dto.Address;
 
-            var result = await userManager.UpdateAsync(appUser);
+            var result = await _userManager.UpdateAsync(user);
 
-            if (result.Succeeded)
-            {
-                ViewBag.SuccessMessage = "Profile updated successfuly";
+            ViewBag.SuccessMessage = result.Succeeded
+                ? "Profile updated successfully!"
+                : "Unable to update the profile: " + result.Errors.First().Description;
 
-            }
-            else
-            {
-                ViewBag.ErrorMessage = "Unable to update the profile: " + result.Errors.First().Description;
-            }
-
-            return View(profileDto);
+            return View(dto);
         }
 
         [Authorize]
-        public IActionResult Password()
-        {
-            return View();
-        }
+        public IActionResult Password() => View();
 
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> Password(PasswordDto passwordDto)
+        [Authorize, HttpPost]
+        public async Task<IActionResult> Password(PasswordDto dto)
         {
             if (!ModelState.IsValid)
-            {
                 return View();
-            }
 
-            var appUser = await userManager.GetUserAsync(User);
-            if (appUser == null)
-            {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
                 return RedirectToAction("Index", "Home");
-            }
 
-            var result = await userManager.ChangePasswordAsync(appUser,
-                passwordDto.CurrentPassword, passwordDto.NewPassword);
+            var result = await _userManager.ChangePasswordAsync(user, dto.CurrentPassword, dto.NewPassword);
 
             if (result.Succeeded)
-            {
                 ViewBag.SuccessMessage = "Password updated successfully!";
-            }
             else
-            {
                 ViewBag.ErrorMessage = "Error: " + result.Errors.First().Description;
-            }
 
             return View();
         }
 
-        public IActionResult AccessDenied()
-        {
-            return RedirectToAction("Index", "Home");
-        }
+        public IActionResult AccessDenied() => RedirectToAction("Index", "Home");
 
         public IActionResult ForgotPassword()
         {
-            if (signInManager.IsSignedIn(User))
-            {
+            if (_signInManager.IsSignedIn(User))
                 return RedirectToAction("Index", "Home");
-            }
 
             return View();
         }
@@ -234,10 +183,8 @@ namespace ThriftStoreWebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> ForgotPassword([Required, EmailAddress] string email)
         {
-            if (signInManager.IsSignedIn(User))
-            {
+            if (_signInManager.IsSignedIn(User))
                 return RedirectToAction("Index", "Home");
-            }
 
             ViewBag.Email = email;
 
@@ -247,73 +194,50 @@ namespace ThriftStoreWebApp.Controllers
                 return View();
             }
 
-            var user = await userManager.FindByEmailAsync(email);
-
+            var user = await _userManager.FindByEmailAsync(email);
             if (user != null)
             {
-                var token = await userManager.GeneratePasswordResetTokenAsync(user);
-                string resetUrl = Url.ActionLink("ResetPassword", "Account", new { token, email }) ?? "URL Error";
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var resetUrl = Url.ActionLink("ResetPassword", "Account", new { token, email }) ?? "URL Error";
 
-                string senderName = configuration["BrevoSettings:SenderName"] ?? "";
-                string senderEmail = configuration["BrevoSettings:SenderEmail"] ?? "";
+                string senderName = _configuration["BrevoSettings:SenderName"] ?? "";
+                string senderEmail = _configuration["BrevoSettings:SenderEmail"] ?? "";
                 string username = user.FirstName + " " + user.LastName;
                 string subject = "Password Reset";
-                string message = "Dear " + username + ",\n\n" +
-                                 "You can reset your password using the following link: \n\n" +
-                                 resetUrl + "\n\n" +
-                                 "Best Regards,\n\n" +
-                                 "Thrift Avenue Team";
+                string message = $"Dear {username},\n\nYou can reset your password using the following link:\n\n{resetUrl}\n\nBest Regards,\nThrift Avenue Team";
 
                 EmailSender.SendEmail(senderName, senderEmail, username, email, message, subject);
             }
 
             ViewBag.SuccessMessage = "Please check your email and click on the password reset link.";
-
             return View();
         }
 
         public IActionResult ResetPassword(string? token)
         {
-            if (signInManager.IsSignedIn(User))
-            {
+            if (_signInManager.IsSignedIn(User) || token == null)
                 return RedirectToAction("Index", "Home");
-            }
-
-            if (token == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
 
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> ResetPassword(string? token, PasswordResetDto model)
+        public async Task<IActionResult> ResetPassword(string? token, PasswordResetDto dto)
         {
-            if (signInManager.IsSignedIn(User))
-            {
+            if (_signInManager.IsSignedIn(User) || token == null)
                 return RedirectToAction("Index", "Home");
-            }
-
-            if (token == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
 
             if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
+                return View(dto);
 
-            var user = await userManager.FindByEmailAsync(model.Email);
-            if(user == null)
+            var user = await _userManager.FindByEmailAsync(dto.Email);
+            if (user == null)
             {
                 ViewBag.ErrorMessage = "Token not valid!";
-                return View(model);
+                return View(dto);
             }
 
-            var result = await userManager.ResetPasswordAsync(user, token, model.Password);
-
+            var result = await _userManager.ResetPasswordAsync(user, token, dto.Password);
             if (result.Succeeded)
             {
                 ViewBag.SuccessMessage = "Password reset successfully!";
@@ -321,12 +245,10 @@ namespace ThriftStoreWebApp.Controllers
             else
             {
                 foreach (var error in result.Errors)
-                {
                     ModelState.AddModelError("", error.Description);
-                }
             }
 
-            return View(model);
+            return View(dto);
         }
     }
 }

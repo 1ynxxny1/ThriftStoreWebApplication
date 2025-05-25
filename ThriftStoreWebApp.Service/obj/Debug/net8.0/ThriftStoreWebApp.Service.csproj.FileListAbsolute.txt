@@ -1,0 +1,15 @@
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Service\bin\Debug\net8.0\ThriftStoreWebApp.Service.deps.json
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Service\bin\Debug\net8.0\ThriftStoreWebApp.Service.dll
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Service\bin\Debug\net8.0\ThriftStoreWebApp.Service.pdb
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Service\bin\Debug\net8.0\ThriftStoreWebApp.Data.dll
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Service\bin\Debug\net8.0\ThriftStoreWebApp.Data.pdb
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Service\obj\Debug\net8.0\ThriftStoreWebApp.Service.csproj.AssemblyReference.cache
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Service\obj\Debug\net8.0\ThriftStoreWebApp.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Service\obj\Debug\net8.0\ThriftStoreWebApp.Service.AssemblyInfoInputs.cache
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Service\obj\Debug\net8.0\ThriftStoreWebApp.Service.AssemblyInfo.cs
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Service\obj\Debug\net8.0\ThriftStoreWebApp.Service.csproj.CoreCompileInputs.cache
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Service\obj\Debug\net8.0\ThriftSt.0DE9DBAA.Up2Date
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Service\obj\Debug\net8.0\ThriftStoreWebApp.Service.dll
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Service\obj\Debug\net8.0\refint\ThriftStoreWebApp.Service.dll
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Service\obj\Debug\net8.0\ThriftStoreWebApp.Service.pdb
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp.Service\obj\Debug\net8.0\ref\ThriftStoreWebApp.Service.dll

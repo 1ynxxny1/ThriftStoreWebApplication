@@ -61,6 +61,7 @@
             <th style="cursor: pointer" onclick="sortTable('Price')">Price @getArrow("Price")</th>
             <th>Image</th>
             <th style="cursor: pointer" onclick="sortTable('CreatedDate')">Created At @getArrow("CreatedDate")</th>
+            <th style="cursor: pointer" onclick="sortTable('Availability')">Availability @getArrow("Availability") </th>
             <th>Action</th>
         </tr>
     </thead>
@@ -78,6 +79,7 @@
                 <td>@(product.Price)MKD</td>
                 <td><img src="/products images/@product.ImageFileName" width="100" /></td>
                 <td>@product.CreatedDate.ToString("dd/MM/yyyy")</td>
+                <td>@product.Availability</td>
                 <td style="white-space:nowrap">
                     <a class="btn btn-success btn-sm" asp-controller="Products" asp-action="Edit"
                         asp-route-id="@product.Id">Edit</a>

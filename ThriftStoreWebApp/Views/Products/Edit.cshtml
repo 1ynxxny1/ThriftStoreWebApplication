@@ -6,15 +6,16 @@
     <div class="col-md-8 mx-auto rounded border p-3">
         <h2 class="text-center mb-5">Edit Product</h2>
 
-
         <form method="post" enctype="multipart/form-data">
+            <!-- Display Product Id -->
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Id</label>
                 <div class="col-sm-8">
-                    <input class="form-control-plaintext" readonly value="@ViewData[" ProductId"]" />
+                    <input class="form-control-plaintext" readonly value="@ViewData["ProductId"]" />
                 </div>
             </div>
-            
+
+            <!-- Name Field -->
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Name</label>
                 <div class="col-sm-8">
@@ -23,6 +24,7 @@
                 </div>
             </div>
 
+            <!-- Brand Field -->
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Brand</label>
                 <div class="col-sm-8">
@@ -31,17 +33,19 @@
                 </div>
             </div>
 
+            <!-- Gender Field -->
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Gender</label>
                 <div class="col-sm-8">
                     <select class="form-select" asp-for="Gender">
-                        <option value='Other'>Other</option>
-                        <option value='Mens'>Mens</option>
-                        <option value='Womens'>Womens</option>
+                        <option value="Other">Other</option>
+                        <option value="Mens">Mens</option>
+                        <option value="Womens">Womens</option>
                     </select>
                 </div>
             </div>
 
+            <!-- Size Field -->
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Size</label>
                 <div class="col-sm-8">
@@ -50,18 +54,20 @@
                 </div>
             </div>
 
+            <!-- Category Field -->
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Category</label>
                 <div class="col-sm-8">
                     <select class="form-select" asp-for="Category">
-                        <option value='Other'>Other</option>
-                        <option value='Clothing'>Clothing</option>
-                        <option value='Footwear'>Footwear</option>
-                        <option value='Accessories'>Accessories</option>
+                        <option value="Other">Other</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Footwear">Footwear</option>
+                        <option value="Accessories">Accessories</option>
                     </select>
                 </div>
             </div>
 
+            <!-- Price Field -->
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Price</label>
                 <div class="col-sm-8">
@@ -70,6 +76,7 @@
                 </div>
             </div>
 
+            <!-- Description Field -->
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Description</label>
                 <div class="col-sm-8">
@@ -78,12 +85,14 @@
                 </div>
             </div>
 
+            <!-- Display Current Image -->
             <div class="row mb-3">
                 <div class="offset-sm-4 col-sm-8">
                     <img src="/products images/@ViewData["ImageFileName"]" width="150" />
                 </div>
             </div>
 
+            <!-- Image Upload Field -->
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Image</label>
                 <div class="col-sm-8">
@@ -92,6 +101,7 @@
                 </div>
             </div>
 
+            <!-- Created Date Field -->
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Created At</label>
                 <div class="col-sm-8">
@@ -99,6 +109,16 @@
                 </div>
             </div>
 
+            <!-- Availability Checkbox -->
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Available</label>
+                <div class="col-sm-8">
+                    <input type="checkbox" class="form-check-input" asp-for="Availability" />
+                    <span asp-validation-for="Availability" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Submit and Cancel Buttons -->
             <div class="row">
                 <div class="offset-sm-4 col-sm-4 d-grid">
                     <button type="submit" class="btn btn-success">Submit</button>

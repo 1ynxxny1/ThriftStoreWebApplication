@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.DataProtection.KeyManagement.Internal;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+using ThriftStoreWebApp.Data.Interfaces;
 using ThriftStoreWebApp.Models;
-using ThriftStoreWebApp.Services;
 
 namespace ThriftStoreWebApp.Controllers
 {
@@ -11,155 +10,65 @@ namespace ThriftStoreWebApp.Controllers
     [Route("/Admin/[controller]/{action=Index}/{id?}")]
     public class ProductsController : Controller
     {
-        private readonly ApplicationDbContext context;
-        private readonly IWebHostEnvironment environment;
+        private readonly IProductRepository _productRepository;
+        private readonly IWebHostEnvironment _environment;
+        private readonly IMapper _mapper;
         private readonly int pageSize = 5;
 
-        public ProductsController(ApplicationDbContext context, IWebHostEnvironment environment)
+        public ProductsController(IProductRepository productRepository, IWebHostEnvironment environment, IMapper mapper)
         {
-            this.context = context;
-            this.environment = environment;
+            _productRepository = productRepository;
+            _environment = environment;
+            _mapper = mapper;
         }
-        public IActionResult Index(int pageIndex, string? search, string? column, string? orderBy)
-        {
-            IQueryable<Product> query = context.Products;
 
-            if (search != null)
+        public async Task<IActionResult> Index(int pageIndex = 1, string? search = null, string? column = null, string? orderBy = null)
+        {
+            IQueryable<Product> query = _productRepository.GetAll();
+
+            if (!string.IsNullOrEmpty(search))
             {
                 query = query.Where(p => p.Name.Contains(search) || p.Brand.Contains(search));
             }
 
-            string[] validColumns = { "Id", "Name", "Brand", "Gender", "Size", "Category", "Price", "CreatedDate" };
-            string[] validOrderBy = { "desc", "asc"};
+            string[] validColumns = { "Id", "Name", "Brand", "Gender", "Size", "Category", "Price", "CreatedDate", "Availability" };
+            string[] validOrderBy = { "desc", "asc" };
 
-            if (!validColumns.Contains(column))
-            {
-                column = "Id";
-            }
+            if (!validColumns.Contains(column)) column = "Id";
+            if (!validOrderBy.Contains(orderBy)) orderBy = "desc";
 
-            if (!validOrderBy.Contains(orderBy))
+            query = column switch
             {
-                orderBy = "desc";
-            }
+                "Name" => orderBy == "asc" ? query.OrderBy(p => p.Name) : query.OrderByDescending(p => p.Name),
+                "Brand" => orderBy == "asc" ? query.OrderBy(p => p.Brand) : query.OrderByDescending(p => p.Brand),
+                "Gender" => orderBy == "asc" ? query.OrderBy(p => p.Gender) : query.OrderByDescending(p => p.Gender),
+                "Size" => orderBy == "asc" ? query.OrderBy(p => p.Size) : query.OrderByDescending(p => p.Size),
+                "Category" => orderBy == "asc" ? query.OrderBy(p => p.Category) : query.OrderByDescending(p => p.Category),
+                "Price" => orderBy == "asc" ? query.OrderBy(p => p.Price) : query.OrderByDescending(p => p.Price),
+                "CreatedDate" => orderBy == "asc" ? query.OrderBy(p => p.CreatedDate) : query.OrderByDescending(p => p.CreatedDate),
+                "Availability" => orderBy == "asc" ? query.OrderBy(p => p.Availability) : query.OrderByDescending(p => p.Availability),
+                _ => orderBy == "asc" ? query.OrderBy(p => p.Id) : query.OrderByDescending(p => p.Id)
+            };
 
-            if(column == "Name")
-            {
-                if (orderBy == "asc")
-                {
-                    query = query.OrderBy(p => p.Name);
-                }
-                else
-                {
-                    query = query.OrderByDescending(p => p.Name);
-                }
-            }
-            else if (column == "Brand")
-            {
-                if (orderBy == "asc")
-                {
-                    query = query.OrderBy(p => p.Brand);
-                }
-                else
-                {
-                    query = query.OrderByDescending(p => p.Brand);
-                }
-            }
-            else if (column == "Gender")
-            {
-                if (orderBy == "asc")
-                {
-                    query = query.OrderBy(p => p.Gender);
-                }
-                else
-                {
-                    query = query.OrderByDescending(p => p.Gender);
-                }
-            }
-            else if (column == "Size")
-            {
-                if (orderBy == "asc")
-                {
-                    query = query.OrderBy(p => p.Size);
-                }
-                else
-                {
-                    query = query.OrderByDescending(p => p.Size);
-                }
-            }
-            else if (column == "Category")
-            {
-                if (orderBy == "asc")
-                {
-                    query = query.OrderBy(p => p.Category);
-                }
-                else
-                {
-                    query = query.OrderByDescending(p => p.Category);
-                }
-            }
-            else if (column == "Price")
-            {
-                if (orderBy == "asc")
-                {
-                    query = query.OrderBy(p => p.Price);
-                }
-                else
-                {
-                    query = query.OrderByDescending(p => p.Price);
-                }
-            }
-            else if (column == "CreatedAt")
-            {
-                if (orderBy == "asc")
-                {
-                    query = query.OrderBy(p => p.CreatedDate);
-                }
-                else
-                {
-                    query = query.OrderByDescending(p => p.CreatedDate);
-                }
-            }
-            else
-            {
-                if (orderBy == "asc")
-                {
-                    query = query.OrderBy(p => p.Id);
-                }
-                else
-                {
-                    query = query.OrderByDescending(p => p.Id);
-                }
-            }
-
-            //query = query.OrderByDescending(p => p.Id);
-
-            if (pageIndex < 1)
-            {
-                pageIndex = 1;
-            }
-
-            decimal count = query.Count();
-            int totalPages = (int)Math.Ceiling(count / pageSize);
-            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
-
-            var products = query.ToList();
+            int totalPages = (int)Math.Ceiling(query.Count() / (double)pageSize);
+            var products = query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
 
             ViewData["PageIndex"] = pageIndex;
             ViewData["TotalPages"] = totalPages;
-            
             ViewData["Search"] = search ?? "";
-
             ViewData["Column"] = column;
             ViewData["OrderBy"] = orderBy;
 
             return View(products);
         }
+
         public IActionResult Create()
         {
             return View();
         }
+
         [HttpPost]
-        public IActionResult Create(ProductDto productDto)
+        public async Task<IActionResult> Create(ProductDto productDto)
         {
             if (productDto.ImageFile == null)
             {
@@ -171,54 +80,30 @@ namespace ThriftStoreWebApp.Controllers
                 return View(productDto);
             }
 
-            string newFileName = DateTime.Now.ToString("yyyyMMddHmmssfff");
-            newFileName += Path.GetExtension(productDto.ImageFile!.FileName);
+            string newFileName = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(productDto.ImageFile!.FileName);
+            string imageFullPath = Path.Combine(_environment.WebRootPath, "products images", newFileName);
 
-            string imageFullPath = environment.WebRootPath + "/products images/" + newFileName;
             using (var stream = System.IO.File.Create(imageFullPath))
             {
                 productDto.ImageFile.CopyTo(stream);
             }
 
-            Product product = new Product()
-            {
-                Name = productDto.Name,
-                Brand = productDto.Brand,
-                Gender = productDto.Gender,
-                Size = productDto.Size,
-                Category = productDto.Category,
-                Price = productDto.Price,
-                Description = productDto.Description,
-                ImageFileName = newFileName,
-                CreatedDate = DateTime.Now,
-            };
+            var product = _mapper.Map<Product>(productDto);
+            product.ImageFileName = newFileName;
+            product.CreatedDate = DateTime.Now;
 
+            await _productRepository.AddAsync(product);
+            await _productRepository.SaveChangesAsync();
 
-            context.Products.Add(product);
-            context.SaveChanges();
-
-            return RedirectToAction("Index", "Products");
+            return RedirectToAction("Index");
         }
 
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            var product = context.Products.Find(id);
+            var product = await _productRepository.GetByIdAsync(id);
+            if (product == null) return RedirectToAction("Index");
 
-            if (product == null)
-            {
-                return RedirectToAction("Index", "Products");
-            }
-
-            var productDto = new ProductDto()
-            {
-                Name = product.Name,
-                Brand = product.Brand,
-                Gender = product.Gender,
-                Size = product.Size,
-                Category = product.Category,
-                Price = product.Price,
-                Description = product.Description,
-            };
+            var productDto = _mapper.Map<ProductDto>(product);
 
             ViewData["ProductId"] = product.Id;
             ViewData["ImageFileName"] = product.ImageFileName;
@@ -228,68 +113,55 @@ namespace ThriftStoreWebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(int id, ProductDto productDto)
+        public async Task<IActionResult> Edit(int id, ProductDto productDto)
         {
-            var product = context.Products.Find(id);
-
-            if (product == null)
-            {
-                return RedirectToAction("Index", "Products");
-            }
+            var product = await _productRepository.GetByIdAsync(id);
+            if (product == null) return RedirectToAction("Index");
 
             if (!ModelState.IsValid)
             {
                 ViewData["ProductId"] = product.Id;
                 ViewData["ImageFileName"] = product.ImageFileName;
                 ViewData["CreatedDate"] = product.CreatedDate.ToString("dd/MM/yyyy");
-
                 return View(productDto);
             }
 
             string newFileName = product.ImageFileName ?? string.Empty;
             if (productDto.ImageFile != null)
             {
-                newFileName = DateTime.Now.ToString("yyyyMMddHHmmfff");
-                newFileName += Path.GetExtension(productDto.ImageFile.FileName);
+                newFileName = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(productDto.ImageFile.FileName);
+                string imageFullPath = Path.Combine(_environment.WebRootPath, "products images", newFileName);
 
-                string imageFullPath = environment.WebRootPath + "/products images/" + newFileName;
                 using (var stream = System.IO.File.Create(imageFullPath))
                 {
                     productDto.ImageFile.CopyTo(stream);
                 }
 
-                string oldImageFullPath = environment.WebRootPath + "/products images/" + product.ImageFileName;
-                System.IO.File.Delete(oldImageFullPath);
+                string oldImageFullPath = Path.Combine(_environment.WebRootPath, "products images", product.ImageFileName);
+                if (System.IO.File.Exists(oldImageFullPath)) System.IO.File.Delete(oldImageFullPath);
             }
 
-            product.Name = productDto.Name;
-            product.Brand = productDto.Brand;
-            product.Gender = productDto.Gender;
-            product.Size = productDto.Size;
-            product.Category = productDto.Category;
-            product.Price = productDto.Price;
-            product.Description = productDto.Description;
+            _mapper.Map(productDto, product); 
             product.ImageFileName = newFileName;
 
-            context.SaveChanges();
+            await _productRepository.UpdateAsync(product);
+            await _productRepository.SaveChangesAsync();
 
-            return RedirectToAction("Index", "Products");
+            return RedirectToAction("Index");
         }
 
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var product = context.Products.Find(id);
-            if (product == null)
-            {
-                return RedirectToAction("Index", "Products");
-            }
-            string imageFullPath = environment.WebRootPath + "/products images/" + product.ImageFileName;
-            System.IO.File.Delete(imageFullPath);
+            var product = await _productRepository.GetByIdAsync(id);
+            if (product == null) return RedirectToAction("Index");
 
-            context.Products.Remove(product);
-            context.SaveChanges(true);
+            string imageFullPath = Path.Combine(_environment.WebRootPath, "products images", product.ImageFileName);
+            if (System.IO.File.Exists(imageFullPath)) System.IO.File.Delete(imageFullPath);
 
-            return RedirectToAction("Index", "Products");
+            await _productRepository.DeleteAsync(product);
+            await _productRepository.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
     }
 }
