@@ -325,12 +325,6 @@ C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug
 C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\staticwebassets\msbuild.ThriftStoreWebApp.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\staticwebassets\msbuild.ThriftStoreWebApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\staticwebassets\msbuild.build.ThriftStoreWebApp.props
-C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.ThriftStoreWebApp.props
-C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.ThriftStoreWebApp.props
-C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\ThriftSt.4985F3B2.Up2Date
 C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\ThriftStoreWebApp.dll
@@ -338,3 +332,4 @@ C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug
 C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\ThriftStoreWebApp.pdb
 C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\ThriftStoreWebApp.genruntimeconfig.cache
 C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\ref\ThriftStoreWebApp.dll
+C:\Users\deabi\source\repos\ThriftStoreWebApp - Copy\ThriftStoreWebApp\obj\Debug\net8.0\staticwebassets.build.json.cache

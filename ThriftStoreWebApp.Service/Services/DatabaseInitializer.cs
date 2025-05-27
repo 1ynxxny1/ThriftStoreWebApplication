@@ -16,7 +16,7 @@ namespace ThriftStoreWebApp.Services
             }
 
             // Ensure roles exist
-            foreach (var role in new[] { "admin", "seller", "client" })
+            foreach (var role in new[] { "admin", "client" })
             {
                 if (!await roleManager.RoleExistsAsync(role))
                 {

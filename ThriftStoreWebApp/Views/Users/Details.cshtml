@@ -51,8 +51,7 @@
                 @{
                     var roles = ViewBag.Roles as List<string> ?? new List<string>();
                     var rolesStr = string.Join(", ", roles);
-                    string color = roles.Contains("admin") ? "bg-dark"
-                                  : roles.Contains("seller") ? "bg-info text-dark"
+                    string color = roles.Contains("admin") ? "bg-dark"     
                                   : roles.Contains("client") ? "bg-warning text-dark"
                                   : "bg-secondary";
                 }

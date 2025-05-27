@@ -9,9 +9,13 @@
     <div class="col-md-8">
         <h3 class="mb-3">@Model.Name</h3>
         <h3 class="mb-3">@(Model.Price)MKD</h3>
-        <button type="button" class="btn btn-success btn-sm" onclick="addToCart(this, @Model.Id)">
+        <button type="button"
+                class="btn btn-success btn-sm mb-2 add-to-cart-btn"
+                data-product-id="@Model.Id"
+                onclick="addToCart(this, @Model.Id)">
             Add to Cart <i class="bi bi-cart4"></i>
         </button>
+
 
 
         <hr />
@@ -57,3 +61,37 @@
 
     </div>
 </div>
+<script>
+    function getShoppingCart() {
+        let cookieValue = document.cookie
+            .split('; ')
+            .find(row => row.startsWith('shopping_cart='));
+
+        if (!cookieValue) return {};
+
+        try {
+            let base64 = cookieValue.split('=')[1];
+            let json = atob(base64);
+            return JSON.parse(json);
+        } catch (e) {
+            console.error("Error reading cart:", e);
+            return {};
+        }
+    }
+
+    function markAddedItems() {
+        let cart = getShoppingCart();
+
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            let id = button.dataset.productId;
+            if (cart[id]) {
+                button.disabled = true;
+                button.innerHTML = "Added <i class='bi bi-check-lg'></i>";
+                button.classList.remove('btn-success');
+                button.classList.add('btn-secondary');
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", markAddedItems);
+</script>

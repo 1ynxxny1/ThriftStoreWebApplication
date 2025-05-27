@@ -60,23 +60,24 @@
         function addToCart(button, id) {
             let cart = getShoppingCart();
 
-            let quantity = cart[id];
-            if (isNaN(quantity)) {
-                cart[id] = 1;
-            } else {
-                cart[id] = Number(quantity) + 1;
+            // Only add if the product is not already in the cart
+            if (cart[id]) {
+                return; // Item already added, do nothing
             }
 
+            cart[id] = 1; // Add product with quantity = 1
             saveCart(cart);
+
+            button.disabled = true;
             button.innerHTML = "Added <i class='bi bi-check-lg'></i>";
+            button.classList.remove('btn-success');
+            button.classList.add('btn-secondary');
 
-            let cartSize = 0;
-            for (var cartItem of Object.entries(cart)) {
-                quantity = cartItem[1];
-                if (isNaN(quantity)) continue;
-
-                cartSize += Number(quantity);
-            }
+            // Update cart size
+            let cartSize = Object.values(cart).reduce((sum, quantity) => {
+                quantity = Number(quantity);
+                return sum + (isNaN(quantity) ? 0 : quantity);
+            }, 0);
 
             document.getElementById("CartSize").innerHTML = cartSize;
         }

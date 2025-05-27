@@ -22,7 +22,6 @@
             var roles = await UserManager.GetRolesAsync(user);
             var rolesStr = string.Join(", ", roles);
             string color = roles.Contains("admin") ? "bg-dark"
-            : roles.Contains("seller") ? "bg-info text-dark"
             : roles.Contains("client") ? "bg-warning text-dark"
             : "bg-secondary";
 

@@ -49,12 +49,50 @@
                         <h4 class="mb-3">@(product.Price)MKD</h4>
                         <a class="btn btn-dark btn-sm mb-2" asp-controller="Store" 
                         asp-action="Details" asp-route-id="@product.Id" role="button">Details</a>
-                        <button type="button" class="btn btn-success btn-sm mb-2" onclick="addToCart(this, @product.Id)">
+                        <button type="button"
+                                class="btn btn-success btn-sm mb-2 add-to-cart-btn"
+                                data-product-id="@product.Id"
+                                onclick="addToCart(this, @product.Id)">
                             Add to Cart <i class="bi bi-cart4"></i>
                         </button>
+
                     </div>
                 </div>
             }
         </div>
     </div>
 </div>
+<script>
+    function getShoppingCart() {
+        let cookieValue = document.cookie
+            .split('; ')
+            .find(row => row.startsWith('shopping_cart='));
+
+        if (!cookieValue) return {};
+
+        try {
+            let base64 = cookieValue.split('=')[1];
+            let json = atob(base64);
+            return JSON.parse(json);
+        } catch (e) {
+            console.error("Error reading cart:", e);
+            return {};
+        }
+    }
+
+    function markAddedItems() {
+        let cart = getShoppingCart();
+
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            let id = button.dataset.productId;
+            if (cart[id]) {
+                button.disabled = true;
+                button.innerHTML = "Added <i class='bi bi-check-lg'></i>";
+                button.classList.remove('btn-success');
+                button.classList.add('btn-secondary');
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", markAddedItems);
+</script>
