@@ -52,7 +52,7 @@ Update-Database
 ```
 
 ### 5. Enter data into the Products Table
-- To add sample products to the database, you can execute the following SQL script:
+- To add sample products to the database, you can run the provided backup database file or execute the following SQL script:
 ```sql
 INSERT INTO [ThriftStoreDB].[dbo].[Products] 
 ([Name], [Brand], [Gender], [Size], [Category], [Price], [Description], [ImageFileName], [CreatedDate])
